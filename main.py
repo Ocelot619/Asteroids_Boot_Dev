@@ -6,7 +6,11 @@ def main():
     print(f"Starting Asteroids with pygame version:{pygame.version.ver}")
     print(f"Screen width: {SCREEN_WIDTH} \nScreen height: {SCREEN_HEIGHT}")
     pygame.init()
+    pygame.time.Clock()
+    dt = 0
+    clock = pygame.time.Clock()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    
     while True:
         log_state()
         for event in pygame.event.get():
@@ -14,7 +18,11 @@ def main():
                 return
         
         screen.fill((255,255,12))
-        pygame.display.flip()
+        dt = clock.tick(60) / 1000
+        
+        pygame.display.flip() #always last!
+        
+        
 
 
 if __name__ == "__main__":
